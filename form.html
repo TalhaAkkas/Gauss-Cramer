@@ -1,0 +1,37 @@
+<html><!-- created by talhakkas date:14.01.2013-->
+	<head>
+	<script src='script.js'></script> 
+	<script src='gauss.js'></script>
+	<script src='cramer.js'></script>
+	<script src='yardim.js'></script>
+	</head>
+	<title>Talha Büyükakkaslar tarafindan 14.01.2013 tarihinde lineer cebir dersi ödevi olarak yazilmistir</title>
+	<body>
+	
+		<form>
+
+		<p id="ppp">Denklemleri xyz degiskenleri olmadan giriniz 3x+y-5z=10 için [3,1,-5,10]
+		 x-2z=1 için [1,0,-2,1] giriniz </p>
+		<input type="hidden" value="0" id="theValue" />
+		<p><a href="javascript:;" onclick="addElement();">Denklem Ekle</a>
+		<a href="javascript:;" onclick="removeElement();">Denklem Çikart</a></p>
+		
+		<input type="radio" name="method" value="0">Cramer Metodu<br>
+		<input type="radio" name="method" value="1">Gauss Indirgeme<br>
+		
+		<div id="myDiv"> 
+		<input type="textline" value="" id="input0" />
+		</div>
+		<p><a href="javascript:;" onclick="eval();">Hesapla</a>
+		
+
+		</form>
+		<a href="javascript:;" onclick="makeT1();">Test1</a>
+		<a href="javascript:;" onclick="makeT2();">Test2</a>
+		<a href="javascript:;" onclick="makeT3();">Test3</a>
+		<a href="javascript:;" onclick="makeT4();">Test4</a>
+		<a href="javascript:;" onclick="makeT4();">Test5</a>
+		<p id="aa"></p>
+		
+	</body>
+</html>
