@@ -55,19 +55,18 @@ for(var i = 0; i < sy; i++){
 return ne
 }
 function cramer(A){
-var ni = document.getElementById('aa');
 var n = A[0].length - 1;
 var m = A.length;
 if (n != m){
-	createDiv(ni,"Cramer yönteminde gereksiz varsa bu satirlari elemine etmek için kösegen formuna getirmeliyiz"+ "\n", "Cramer Metodu kare matrisler için uygulanir");
+	createDiv("Cramer yönteminde gereksiz varsa bu satirlari elemine etmek için kösegen formuna getirmeliyiz"+ "\n", "Cramer Metodu kare matrisler için uygulanir");
 	factorDirectLU(A);
 }
 var res = remsub(A,n);
 var mat = sub(A,m,n);
 var results = new Array();
 var ant = det(mat);
-createDiv(ni, "Matirslerin determinantlarini aliyoruz \n", "Determinant alma için http://www.matematik.tc/matematik-2-konu-anlatimlari-oku/matris-ve-determinant.html");
-createDiv(ni, stringfyMatrix(mat,"Degisken Matrisi",true), "Cramet metodu için http://w2.anadolu.edu.tr/aos/kitap/IOLTP/2286/unite03.pdf");
+createDiv("Matirslerin determinantlarini aliyoruz \n", "Determinant alma için http://www.matematik.tc/matematik-2-konu-anlatimlari-oku/matris-ve-determinant.html");
+createDiv(stringfyMatrix(mat,"Degisken Matrisi",true), "Cramet metodu için http://w2.anadolu.edu.tr/aos/kitap/IOLTP/2286/unite03.pdf");
 
 if(Math.abs(ant) < 0.00001 ){
 	alert('determinant sifira çok yakin oldugu için çramer metodu uygulayamiyoruz');
@@ -77,8 +76,8 @@ for(var w = 0; w < n; w++){
 	var temp = insertVector(mat,res,w)
 	console.log(JSON.stringify(temp) + " " +  w +" "+ ant);
 	results.push(det(temp) / ant);
-	createDiv(ni, stringfyMatrix(temp, (w+1) +". Matris",true), "Degisken Matrisi Bir matriste degiskenlerin katsayilarinin yerine denklemlerin sonucunun yazilmasi ile bulunur");
-	createDiv(ni, (w+1) + ". degisken  = " +det(temp) +"/" +ant+ "="+ det(temp) / ant + "\n", "Cramer Metodunda her bir degisken Degisken Matrisinin determinantinin Esas Matris Determinentina Bölünmesi ile Bulunur");
+	createDiv( stringfyMatrix(temp, (w+1) +". Matris",true), "Degisken Matrisi Bir matriste degiskenlerin katsayilarinin yerine denklemlerin sonucunun yazilmasi ile bulunur");
+	createDiv( (w+1) + ". degisken  = " +det(temp) +"/" +ant+ "="+ det(temp) / ant + "\n", "Cramer Metodunda her bir degisken Degisken Matrisinin determinantinin Esas Matris Determinentina Bölünmesi ile Bulunur");
 }
 return results;
 }

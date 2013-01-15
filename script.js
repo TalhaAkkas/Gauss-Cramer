@@ -86,9 +86,9 @@ function makeT3(){
 
 addElement();
 addElement();
-document.getElementById('input0').value = "[1,3,4,0]";
-document.getElementById('input1').value = "[4,2,1,5]";
-document.getElementById('input2').value = "[12,1,1,3]";
+document.getElementById('input0').value = "[1,6,4,0]";
+document.getElementById('input1').value = "[4,2,1,8]";
+document.getElementById('input2').value = "[12,1,1,23]";
 }
 function makeT4(){
 
@@ -114,8 +114,6 @@ document.getElementById('input3').value = "[-2,-2,4,0]";
 function eval() {  
   var A = new Array(); 
   var X = new Array();
-  
-  var ni = document.getElementById('myDiv');
   var num = (document.getElementById('theValue').value -1) + 2;
   for (var i = 0 ; i < num; i++){
 	var numi = document.getElementById('input' + i);
@@ -137,8 +135,8 @@ function eval() {
 		console.log(JSON.stringify(z));
 		console.log(JSON.stringify(test(A,z)));
 	}else if (radios[1].checked) {
-		createDiv(ni,"Gaus yöntemi için öncelikle kösegen formuna getirmeliyiz"+ "\n","Kösegen Formma getirme için http://w2.anadolu.edu.tr/aos/kitap/IOLTP/2286/unite09.pdf");
-		createDiv(ni,"Kösegen halinden önce" + stringfyMatrix(A,"Matris")+ "\n", "Matrisin ilk hali");
+		createDiv("Gaus yöntemi için öncelikle kösegen formuna getirmeliyiz"+ "\n","Kösegen Formma getirme için http://w2.anadolu.edu.tr/aos/kitap/IOLTP/2286/unite09.pdf");
+		createDiv("Kösegen halinden önce" + stringfyMatrix(A,"Matris")+ "\n", "Matrisin ilk hali");
 		
 		factorDirectLU(A);
 		substitute(A,X);
@@ -160,4 +158,44 @@ for(var i=0; i<A.length; i++){
 	str += "</br>";
 }str +="</br>"
 return str;
+}
+function about(){
+clearScreen();
+createDiv("<b>Kim Yazdi :</b> Talha Büyükakkaslar","",true);
+createDiv("<b>Neden Yazdi :</b> Lineer Cebir Dersi Ödevi olarak yazdi","",true);
+createDiv("<b>Ders Hocasi Kimdi :</b> Sedat Akleylek","",true);
+createDiv("<b>Hangi Konularda  :</b> Cramer Metod ve Gauss Metodu","",true);
+createDiv("<b>Kössegenlestirme   :</b> V  sonlu boyutlu bir vektör uzayi ve   T :  V  ?  V   bir lineer dönüsüm olsun.  V nin öyle bir tabani olsun ki,  T  nin bu tabana göre  A  matrisi kösegen matris olsun.Bu durumda  T  ye kösegenlestirilebilir denir","",true);
+createDiv("• Iki satirin yerlerini degistirmek(A islemine karsilik).","",true);
+createDiv("• Bir satiri sifirdan farkli bir sayi ile çarpmak(B islemine karsilik). ","",true);
+createDiv("• Bir satirin bir sayi ile çarpimini baska bir satira toplamak(C islemine karsilik). ","",true);
+createDiv("Lineer denklem sistemindeki  denklemlerden herhangi birinin iki tarafinin sifirdan farkli bir sayiyla bölünmesi veya  çarpilmasi denklemi degistirmez. Yine bu  denklemlerden ikisinin birbiriyle toplanmasi veya çikartilmasi lineer denklem takiminin çözümünü degistirmez.","",true);
+createDiv("Gauss eliminasyon yönteminde diyagonal altindaki elemanlarin sifirlanmasi için yapilan aik/akk bölme isleminin sonucu, diyagonalin altinda sifir olmasi gereken elemanin yerine yazildigi taktirde, sonuçta üst-üçgensel olmasi gereken matrisin diyagonal altinda yeni bir matris olusur. ","",true); 
+createDiv("<b>Gauss Jordan Metodu </b>Gauss-eliminasyon yöntemindeki geri-süpürme asamasi üst-üçgensellestirme asamasiyla birlestirilebilir. ","",true); 
+createDiv("<b>Cramer Metodu </b>Bilinmeyen sayisi denklem sayisina esit olan dogrusal denklem sstemi AX = B biçiminde verilmis olsun. Sistemin çözümü için su durumlar söz konusudur","",true); 
+createDiv("A = (aij)nxn katsayilar matrisi olmak üzere","",true); 
+createDiv("I. det(A) != 0 ise, sistemin tek çözümü vardir. Bu çözüm xj = Deltaj/det(A)   j=1,2...n biçimindedir. Burada deltaj. Amatrisinde j. sutun yerine B matrisi yazilarak elde edilen matrisin determinantidir. Bu sekilde AX=B sisteminin çözümünün verilmesine <b>Cramer Yöntemi</b> denir","",true); 
+createDiv("II det(A)=0 ve deltaj=0, f=1,2...n ise AX=B sisteminin sonsuz çoklukta çözümü vardir","",true);
+createDiv("III det(A)=0 ve en az bir f için deltaj != 0 ise, AX=B sisteminin hiç bir çözümü yoktur","",true); 
+
+}
+function clearScreen(){
+var sc = document.getElementById("aa"); 
+var pr = sc.parentNode;
+pr.removeChild(sc);
+var el = document.createElement("p"); 
+el.id = "aa";
+pr.appendChild(el); 
+}  
+function createDiv(text, help,t) { 
+var parent = document.getElementById("aa"); 
+var divTag = document.createElement("div"); 
+divTag.id = "div1";
+if(t)divTag.setAttribute("align", "left"); 
+else divTag.setAttribute("align", "center"); 
+divTag.setAttribute("title", help); 
+divTag.style.margin = "0px auto"; 
+divTag.className = "dynamicDiv"; 
+divTag.innerHTML = text; 
+parent.appendChild(divTag); 
 }
