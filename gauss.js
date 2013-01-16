@@ -34,7 +34,7 @@ function factorDirectLU(A) {
     if (pivot == 0)return singular(A);
 	for (var i = k + 1; i < m; i++) {
        var multiplier = A[i][k]/pivot;
-		createDiv("R"+(i + 1) + "<---" + "R" + (i+1) + "- (" + multiplier +"* R" + (k+1) + ")\n","R"+(i + 1) + " satirindan " + multiplier + " adet " + "R" + (k+1)+ " sutununu çikartiyoruz");
+		createDiv("R"+(i + 1) + "<---" + "R" + (i+1) + "- (" + stringifyNum(multiplier) +"* R" + (k+1) + ")\n","R"+(i + 1) + " satirindan " + stringifyNum(multiplier) + " adet " + "R" + (k+1)+ " sutununu çikartiyoruz");
 	   A[i][k] = 0;
       for (var j = k + 1; j < n+1; j++) A[i][j] -= multiplier*A[k][j]
     }
@@ -75,7 +75,7 @@ function substitute(A,X){
             sum += A[j][k]*X[k];
 
         X[j] = (A[j][N] - sum)/A[j][j];
-		createDiv((j+1) + ". degisken  = " + X[j] + "\n", "Basamak formunda en alt basamaktan baslayarak yukari çikacagiz");
+		createDiv((j+1) + ". degisken  = " + stringifyNum(X[j]) + "\n", "Basamak formunda en alt basamaktan baslayarak yukari çikacagiz");
 
     }
 }  

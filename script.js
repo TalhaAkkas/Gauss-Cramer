@@ -127,8 +127,18 @@ function eval() {
   var ni = document.getElementById('aa');
   var Test = A
   if(A.length < A[0].length -1){
-  		alert(A[0].length -1 + " degisken için "+ A.length +" denklem vermissiniz" +"\n"+"lütfen n adet bilinmeyen için en az n adet denklem verniz");
-		return;
+		var a = A[0].length
+  		createDiv( a -1 + " degisken için "+ A.length +" denklem vermissiniz" +"\n"+"verilmeyen degiskenlerin yerine serbest degisken olarak 1 atayacagiz");
+		for(var i = A.length; i< a -1; i++){
+			var temp = new Array();
+			for(var j = 0; j< a; j++){
+			temp[j] = 0
+			}
+			temp[i] = 1
+			temp[a -1] = 1
+			console.log(" " + ( a ))
+			A[i]=temp
+		}
   }
 	if (radios[0].checked) {
 		var z = cramer(A)
@@ -146,19 +156,7 @@ function eval() {
 		alert('Lütfen bir metod seçiniz')
 	}
 }
-function stringfyMatrix(A,x,d){
 
-var str = "";
-str +="</br>"
-if(d)
-	str += "Det (" + x+ ")" + " = " + det(A);
-str +="</br>"
-for(var i=0; i<A.length; i++){
-	str += JSON.stringify(A[i]);
-	str += "</br>";
-}str +="</br>"
-return str;
-}
 function about(){
 clearScreen();
 createDiv("<b>Kim Yazdi :</b> Talha Büyükakkaslar","",true);
@@ -199,3 +197,54 @@ divTag.className = "dynamicDiv";
 divTag.innerHTML = text; 
 parent.appendChild(divTag); 
 }
+function stringfyMatrix(A,x,d){
+var str = "";
+str +="</br>"
+if(d)
+	str += "Det (" + x+ ")" + " = " + det(A);
+str +="</br>"
+for(var i=0; i<A.length; i++){
+	str += stringifyRow(A[i]);
+	str += "</br>";
+}str +="</br>"
+return str;
+}
+function stringifyRow(num){
+var str = "[";
+
+for(var i=0; i<num.length; i++){
+str += stringifyNum(num[i]) 
+if ((i+1) < num.length) str += ",";
+}
+str += "]";
+return  str
+}
+function stringifyNum(num){
+var str = "";
+var prob = 1000
+num = Math.round(num*prob)/prob;
+	if(Math.floor(num) == num){
+		return str + num
+	}else{
+		var noo = Math.floor(num)
+		var top = num - noo
+		top *= prob
+		gc = gcd(top,prob);
+		top /= gc
+		bottom = prob / gc;
+		top += noo * bottom
+		str += "(" + top + "/" + bottom + ")"
+		return str
+	}
+}
+function gcd(x, y) {
+	console.log(x + " " + y)
+	while (y != 0) {
+		var z = x % y;
+		x = y;
+		y = z;
+	}
+	console.log(x)
+	return x;
+}
+
