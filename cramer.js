@@ -57,10 +57,8 @@ return ne
 function cramer(A){
 var n = A[0].length - 1;
 var m = A.length;
-if (n != m){
-	createDiv("Cramer yönteminde gereksiz varsa bu satirlari elemine etmek için kösegen formuna getirmeliyiz"+ "\n", "Cramer Metodu kare matrisler için uygulanir");
-	factorDirectLU(A);
-}
+createDiv("Cramer yönteminde gereksiz varsa bu satirlari elemine etmek için kösegen formuna getirmeliyiz"+ "\n", "Cramer Metodu kare matrisler için uygulanir ve ayni satirlari elemine etmeliyiz");
+factorDirectLU(A);
 var res = remsub(A,n);
 var mat = sub(A,m,n);
 var results = new Array();

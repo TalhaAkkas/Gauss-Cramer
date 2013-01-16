@@ -126,20 +126,6 @@ function eval() {
   var radios = document.getElementsByName('method');
   var ni = document.getElementById('aa');
   var Test = A
-  if(A.length < A[0].length -1){
-		var a = A[0].length
-  		createDiv( a -1 + " degisken için "+ A.length +" denklem vermissiniz" +"\n"+"verilmeyen degiskenlerin yerine serbest degisken olarak 1 atayacagiz");
-		for(var i = A.length; i< a -1; i++){
-			var temp = new Array();
-			for(var j = 0; j< a; j++){
-			temp[j] = 0
-			}
-			temp[i] = 1
-			temp[a -1] = 1
-			console.log(" " + ( a ))
-			A[i]=temp
-		}
-  }
 	if (radios[0].checked) {
 		var z = cramer(A)
 		console.log(JSON.stringify(z));
@@ -248,3 +234,20 @@ function gcd(x, y) {
 	return x;
 }
 
+function serbestDegisken(A){
+  if(A.length < A[0].length -1){
+		var a = A[0].length
+  		createDiv( a -1 + " degisken için "+ A.length +" denklem vermissiniz" +"\n"+"verilmeyen degiskenlerin yerine serbest degisken olarak 1 atayacagiz");
+		for(var i = A.length; i< a -1; i++){
+			var temp = new Array();
+			for(var j = 0; j< a; j++){
+			temp[j] = 0
+			}
+			temp[i] = 1
+			temp[a -1] = 1
+			console.log(" " + ( a ))
+			A[i]=temp
+		}
+  }
+  return A
+}

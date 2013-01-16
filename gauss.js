@@ -12,6 +12,7 @@ function factorDirectLU(A) {
   var m = A.length;
   var j, k, pivot, multiplier;
   for (var k = 0; k < n ; k++) {
+	A = serbestDegisken(A)
 	createDiv((k+1) + ". Asama" + "\n", "Basamak formuna gelene kadar her bir sutunun alt kisimlari 0 a esitlenecek");
 	A=cleanMatrix(A);
 	m = A.length;
